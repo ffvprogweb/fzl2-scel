@@ -3,10 +3,14 @@ package com.fatec.scel.mantemLivro.servico;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.stereotype.Service;
+
 import com.fatec.scel.mantemLivro.model.Livro;
 import com.fatec.scel.mantemLivro.ports.LivroRepository;
 import com.fatec.scel.mantemLivro.ports.LivroServico;
@@ -31,9 +35,15 @@ public class LivroServicoI implements LivroServico {
 	}
 
 	@Override
-	public Optional<Livro> consultaPorId(Long id) {
+	public Livro consultaPorId(Long id) {
 		logger.info(">>>>>> servico consulta por id chamado");
-		return repository.findById(id);
+		Optional <Livro> livro = repository.findById(id);
+		if (livro.isPresent()) {
+			return livro.get();
+		}else {
+			return null;
+		}
+		
 	}
 
 	@Override

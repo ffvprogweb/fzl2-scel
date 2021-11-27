@@ -9,7 +9,7 @@ public interface LivroServico {
 
 	public Livro save(Livro livro);
 
-	public Optional<Livro> consultaPorId(Long id);
+	public Livro consultaPorId(Long id);
 
 	public Livro consultaPorIsbn(String isbn);
 

@@ -1,5 +1,7 @@
 package com.fatec.scel.mantemLivro.model;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -60,15 +62,12 @@ public class Livro {
 		this.autor = autor;
 	}
 
+	
+
+	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
-		return result;
+		return Objects.hash(autor, isbn, titulo);
 	}
 
 	@Override
@@ -80,27 +79,8 @@ public class Livro {
 		if (getClass() != obj.getClass())
 			return false;
 		Livro other = (Livro) obj;
-		if (autor == null) {
-			if (other.autor != null)
-				return false;
-		} else if (!autor.equals(other.autor))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (isbn == null) {
-			if (other.isbn != null)
-				return false;
-		} else if (!isbn.equals(other.isbn))
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
-			return false;
-		return true;
+		return Objects.equals(autor, other.autor) && Objects.equals(isbn, other.isbn)
+				&& Objects.equals(titulo, other.titulo);
 	}
 
 	@Override

@@ -38,7 +38,8 @@ class REQ01CadastrarLivroAPITests {
 		// Então – o sistema valida os dados e permite a consulta do livro
 		assertEquals("201 CREATED", resposta.getStatusCode().toString());
 		assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
-		String bodyEsperado = "{\"id\":4,\"isbn\":\"3333\",\"titulo\":\"User Stories\",\"autor\":\"Cohn\"}";
+		
+		String bodyEsperado = "{\"id\":5,\"isbn\":\"3333\",\"titulo\":\"User Stories\",\"autor\":\"Cohn\"}";
 		assertEquals(bodyEsperado, resposta.getBody());
 	}
 
